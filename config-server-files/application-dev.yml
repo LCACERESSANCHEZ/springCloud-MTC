@@ -1,0 +1,12 @@
+server:
+  port: 9091
+
+encrypt:
+  key: mtc-secret
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA.SERVER.HOSTNAME:http://localhost:8761/eureka}

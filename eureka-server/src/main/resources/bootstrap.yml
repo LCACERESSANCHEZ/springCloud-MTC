@@ -1,0 +1,116 @@
+server:
+  port: 8761
+
+
+spring:
+  config:
+    activate:
+      onProfile: default
+  application:
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+    leaseExpirationDurationInSeconds: 30
+    leaseRenewalIntervalInSeconds: 30
+  client:
+    fetchRegistry: false
+    registerWithEureka: false
+
+  datacenter: MTC
+  environment: Development
+
+---
+
+server:
+  port: 8761
+
+
+spring:
+  config:
+    activate:
+      onProfile: profile-01
+  application:
+    name: eureka-server
+
+eureka:
+
+  instance:
+    hostname: http://eureka-server-1.mtc.com.pe
+    preferIpAddress: true
+    leaseExpirationDurationInSeconds: 30
+    leaseRenewalIntervalInSeconds: 30
+
+
+  client:
+    fetchRegistry: false
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://eureka-server-2.mtc.com.pe:8762/eureka,http://eureka-server-3.mtc.com.pe:8763/eureka
+
+  datacenter: MTC
+  environment: Development
+
+---
+
+server:
+  port: 8762
+
+
+spring:
+  config:
+    activate:
+      onProfile: profile-02
+  application:
+    name: eureka-server
+
+eureka:
+
+  instance:
+    hostname: http://eureka-server-2.mtc.com.pe
+    preferIpAddress: true
+    leaseExpirationDurationInSeconds: 30
+    leaseRenewalIntervalInSeconds: 30
+
+
+  client:
+    fetchRegistry: false
+    registerWithEureka: false
+    serviceUrl:
+      defaultZone: http://eureka-server-1.mtc.com.pe:8761/eureka,http://eureka-server-3.mtc.com.pe:8763/eureka
+
+  datacenter: MTC
+  environment: Development
+
+---
+
+server:
+  port: 8763
+
+
+spring:
+  config:
+    activate:
+      onProfile: profile-03
+  application:
+    name: eureka-server
+
+eureka:
+
+  instance:
+    hostname: http://eureka-server-3.mtc.com.pe
+    preferIpAddress: true
+    leaseExpirationDurationInSeconds: 30
+    leaseRenewalIntervalInSeconds: 30
+
+
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://eureka-server-1.mtc.com.pe:8761/eureka,http://eureka-server-2.mtc.com.pe:8762/eureka
+
+  datacenter: MTC
+  environment: Development

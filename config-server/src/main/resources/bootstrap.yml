@@ -1,0 +1,6 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:9000}
+
+spring:
+  application:
+    name: config-server

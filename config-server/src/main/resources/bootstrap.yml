@@ -11,12 +11,20 @@ spring:
         git:
           uri: https://github.com/LCACERESSANCHEZ/config-server-files.git
           username: LCACERESSANCHEZ
-          password: '{cipher}db9d9d35ae0b5c778f06d8d5d57cecf6ed147f9fe999472fd8f657e27a4789409a4aba832ef6c01a4b5924ac822ebbecd411746865670afcc18c12e16d338663'
+          #password: mitoken
+          password: '{cipher}72d81013fd9cb254d3df0f9689e2323131428a5da5c298a766ffee848cfeff1fda7c147b2401f74e6f056bdbf20557f2115311f3f466886723ccb78524cba0e6'
           defaultLabel: master
           cloneOnStart: true
           refreshRate: 10 # segundos
         encrypt:
           enabled: false #false Para tener encryptado una clave (primero debemos tener el eurekaClient, el encrypt-key con el valor, comentar y descomentar el password arriba)
+
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA.SERVER.HOSTNAME:http://localhost:8761/eureka}
 
 encrypt:
   key: mtc-secret-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 # Util para tomar como base como se va encryptar

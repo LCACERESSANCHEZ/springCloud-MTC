@@ -1,0 +1,14 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:9020}
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mtc:mtc@localhost:27017/mtc?authSource=admin
+
+# Kafka configuration
+kafka:
+  mtc:
+    topic: topic-mtc-consumer
+    port: 9092
+    server: 127.0.0.1

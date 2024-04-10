@@ -4,3 +4,20 @@ server:
 spring:
   application:
     name: config-server
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/LCACERESSANCHEZ/config-server-files.git
+          username: LCACERESSANCHEZ
+          #password: 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
+          password: '{cipher}db9d9d35ae0b5c778f06d8d5d57cecf6ed147f9fe999472fd8f657e27a4789409a4aba832ef6c01a4b5924ac822ebbecd411746865670afcc18c12e16d338663'
+          defaultLabel: master
+          cloneOnStart: true
+          refreshRate: 10 # segundos
+        encrypt:
+          enabled: false #false Para tener encryptado una clave (primero debemos tener el eurekaClient, el encrypt-key con el valor, comentar y descomentar el password arriba)
+
+encrypt:
+  key: mtc-secret-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9 # Util para tomar como base como se va encryptar

@@ -2,7 +2,7 @@ server:
   port: 9091
 
 encrypt:
-  key: mtc-secret
+  key: mtc-secret-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 
 eureka:
   client:

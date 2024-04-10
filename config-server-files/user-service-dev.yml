@@ -1,0 +1,7 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:9010}
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mtc:mtc@localhost:27017/mtc?authSource=admin

@@ -14,8 +14,10 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import pe.gob.mtc.licencias.auditservice.repository.ICustomerRepository;
+import pe.gob.mtc.licencias.auditservice.repository.ILicensesRepository;
 import pe.gob.mtc.licencias.commonmodelsmtc.model.entity.CustomerEntity;
 import pe.gob.mtc.licencias.commonmodelsmtc.model.entity.GenericEntity;
+import pe.gob.mtc.licencias.commonmodelsmtc.model.entity.LicensesEntity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +29,7 @@ import java.util.Map;
 public class KafkaConfig {
 
     private final ICustomerRepository iCustomerRepository;
+    private final ILicensesRepository iLicensesRepository;
 
     @Value("${kafka.mtc.server:127.0.0.1}")
     private String kafkaServer;
@@ -68,10 +71,10 @@ public class KafkaConfig {
         if (obj instanceof CustomerEntity customerEntity) {
             log.info("Almacenando customer Entity");
             iCustomerRepository.save(customerEntity);
-        } /*else if (obj instanceof UserEntity userEntity) {
-            log.info("Almacenando User Entity");
-            log.info(userEntity.toString());
-        } else if (obj instanceof AuditInfo auditInfo) {
+        } else if (obj instanceof LicensesEntity licensesEntity) {
+            log.info("Almacenando Licenses Entity");
+            iLicensesRepository.save(licensesEntity);
+        }/* else if (obj instanceof AuditInfo auditInfo) {
             // Validación o sanitización de datos
             log.info("Almacenando Audit Info");
             auditInfoRepository.save(auditInfo);

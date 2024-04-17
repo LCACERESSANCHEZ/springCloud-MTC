@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: authentication-server-jwt-mtc
+  cloud:
+    config:
+      uri: ${CONFIG.SERVER.HOSTNAME:http://localhost:9000}
+      profile: dev # cloud-gateway-dev.yml
+      enabled: true
